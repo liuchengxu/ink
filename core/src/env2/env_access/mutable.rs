@@ -319,6 +319,14 @@ where
         T::println(content)
     }
 
+    /// Invokes a runtime dispatchable function with the given call data.
+    pub fn invoke_runtime<V>(&mut self, call_data: &V)
+    where
+        V: scale::Encode,
+    {
+        T::invoke_runtime(&mut self.buffer, call_data)
+    }
+
     /// Returns the value from the *runtime* storage at the position of the key.
     ///
     /// # Errors

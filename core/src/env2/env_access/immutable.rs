@@ -320,6 +320,11 @@ where
         /// Prints the given contents to the environmental log.
         fn println(&self, content: &str);
 
+        /// Invokes a runtime dispatchable function with the given call data.
+        fn invoke_runtime<V>(&self, call_data: &V)
+        where
+            V: scale::Encode;
+
         /// Returns the value from the *runtime* storage at the position of the key.
         ///
         /// # Errors
